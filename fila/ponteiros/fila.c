@@ -44,11 +44,15 @@ void insere_fim(Lista *lista) {
 }
 
 void remover(Lista *lista) {
-    no *del = lista->inicio;
-    printf("Removendo primeira posição...");
-    lista->inicio = lista->inicio->prox;
-    free(del);
-    lista->tamanho--;
+    if(lista->inicio == NULL)
+        printf("Lista vazia");
+    else {
+        no *del = lista->inicio;
+        printf("Removendo primeira posição...");
+        lista->inicio = lista->inicio->prox;
+        free(del);
+        lista->tamanho--;
+    }
 }
 
 void imprime(Lista lista) {
