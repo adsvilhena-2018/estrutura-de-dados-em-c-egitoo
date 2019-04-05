@@ -134,7 +134,6 @@ int main() {
     insere_fim(150, &lista);
     insere_inicio(30, &lista);
     insere(200, 1, &lista);
-    printf("\nTamanho: %d\n", lista.tamanho);
     imprime(lista);
     remover(2, &lista);
     imprime(lista);
