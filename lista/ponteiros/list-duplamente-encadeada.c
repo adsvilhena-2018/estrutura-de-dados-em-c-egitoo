@@ -2,9 +2,9 @@
 #include <stdlib.h>
 
 typedef struct No{
-   int valor;
-   struct No *prox;
-   struct No *anterior;
+    int valor;
+    struct No *prox;
+    struct No *anterior;
 }no;
 
 typedef struct  lista{
@@ -16,7 +16,7 @@ typedef struct  lista{
 void lista_vazia(Lista *lista) {
     lista->inicio = NULL;
     lista->fim = NULL;
-    lista->tamanho = -1;
+    lista->tamanho = 0;
 }
 
 int verifica_lista(Lista *lista) {
@@ -72,27 +72,20 @@ void insere(int num, Lista *lista) { //dando pau ao inserir na posição 3 ++
     else if(posicao == lista->tamanho + 1)
         insere_fim(num, lista);
     else {
-        no *atual;
-        if ((lista->tamanho - posicao) <= posicao) {
-            //do fim para a posicao
-            atual = lista->fim;
-            for (int i = lista->tamanho; i >= posicao; i--)
-                atual = atual->anterior;
-        } else {
-            //do inicio para posicao
-            atual = lista->inicio;
-            for (int i = 0; i <= posicao; i++)
-                atual = atual->prox;
-        }
         no *novo = malloc(sizeof(no));
-        no *anterior = atual->anterior;
         novo->valor = num;
-        novo->prox = atual;
-        novo->anterior = atual->anterior;
-        atual->anterior = novo;
+        no *atual = lista->inicio;
+
+        for(int i = 0; i <= posicao - 2; i++)
+            atual = atual->prox;
+
+        no *anterior = atual->anterior;
         anterior->prox = novo;
+        novo->anterior = anterior;
+        novo->prox = atual;
+        atual->anterior = novo;
+        lista->tamanho++;
     }
-    lista->tamanho++;
 }
 
 void remover(Lista *lista) {
