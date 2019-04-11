@@ -31,7 +31,6 @@ int remove_inicio(Lista *lista) {
     for(int i = 0; i < lista->topo; i++)
         lista->valor[i] = lista->valor[i + 1];
     lista->topo--;
-    lista->tamanho--;
     return del;
 }
 
