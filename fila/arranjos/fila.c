@@ -26,6 +26,7 @@ void insere_fim(int num, Lista *lista) {
 int remove_inicio(Lista *lista) {
     int del = lista->valor[lista->cabeca];
     lista->cabeca++;
+    return del;
 }
 
 void imprime(Lista lista) {
