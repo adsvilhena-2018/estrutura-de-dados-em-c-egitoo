@@ -12,21 +12,23 @@ void cria_lista(Lista *lista) {
 }
 
 void insere_fim(int num, Lista *lista) {
-    if(lista->topo == -1) {
-        lista->topo++;
-        lista->cabeca++;
-        lista->valor[lista->topo] = num;
-    }
+    if(lista->topo == 99 && lista->cabeca == 0)
+        printf("Lista cheia!");
     else {
-        lista->topo++;
-        lista->valor[lista->topo] = num;
+        if (lista->topo == -1) {
+            lista->topo++;
+            lista->cabeca++;
+            lista->valor[lista->topo] = num;
+        } else {
+            lista->topo++;
+            lista->valor[lista->topo] = num;
+        }
     }
 }
 
 int remove_inicio(Lista *lista) {
     int del = lista->valor[lista->cabeca];
     lista->cabeca++;
-    return del;
 }
 
 void imprime(Lista lista) {
