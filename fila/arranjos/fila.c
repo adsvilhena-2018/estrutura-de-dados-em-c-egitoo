@@ -28,7 +28,11 @@ void insere_fim(int num, Lista *lista) {
 
 int remove_inicio(Lista *lista) {
     int del = lista->valor[lista->cabeca];
-    lista->cabeca++;
+    for(int i = 0; i < lista->topo; i++)
+        lista->valor[i] = lista->valor[i + 1];
+    lista->topo--;
+    lista->tamanho--;
+    return del;
 }
 
 void imprime(Lista lista) {
