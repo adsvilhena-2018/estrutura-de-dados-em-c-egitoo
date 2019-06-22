@@ -11,8 +11,7 @@ void maxHeap(int *vetor, int tamanho, int i) {
     if (dir < tamanho && vetor[dir] < vetor[maior])
         maior = dir;
 
-    if (maior != i)
-    {
+    if (maior != i) {
         int aux = vetor[i];
         vetor[i] = vetor[maior];
         vetor[maior] = aux;
@@ -26,8 +25,7 @@ void ordena(int vetor[], int tamanho) {
     for (int i = tamanho / 2 - 1; i >= 0; i--)
         maxHeap(vetor, tamanho, i);
 
-    for (int i=tamanho-1; i>=0; i--)
-    {
+    for (int i=tamanho-1; i>=0; i--) {
         int temp = vetor[0];
         vetor[0] = vetor[i];
         vetor[i] = temp;
