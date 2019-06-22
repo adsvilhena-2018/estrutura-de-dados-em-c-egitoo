@@ -1,23 +1,23 @@
 #include<stdio.h>
 
 void maxHeap(int *vetor, int tamanho, int i) {
-    int menor = i;
+    int maior = i;
     int esq = 2 * i + 1;
     int dir = 2 * i + 2;
 
-    if (esq < tamanho && vetor[esq] < vetor[menor])
-        menor = esq;
+    if (esq < tamanho && vetor[esq] < vetor[maior])
+        maior = esq;
 
-    if (dir < tamanho && vetor[dir] < vetor[menor])
-        menor = dir;
+    if (dir < tamanho && vetor[dir] < vetor[maior])
+        maior = dir;
 
-    if (menor != i)
+    if (maior != i)
     {
         int aux = vetor[i];
-        vetor[i] = vetor[menor];
-        vetor[menor] = aux;
+        vetor[i] = vetor[maior];
+        vetor[maior] = aux;
 
-        maxHeap(vetor, tamanho, menor);
+        maxHeap(vetor, tamanho, maior);
     }
 }
 
